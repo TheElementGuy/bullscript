@@ -12,18 +12,20 @@
 		<style>
 			#character {
 				text-align: center;
+				font-size: 7em;
+				margin: 10px;
 			}
 		</style>
 		<script>
 			function randomIntFromInterval(min, max) { // min and max included 
-				return Math.floor(Math.random() * (max - min + 1) + min)
+				return Math.floor(Math.random() * (max - min + 1) + min);
 			}
 		</script>
 	</head>
 	<body>
 		<p id="character"></p>
 		<script>
-			document.getElementById("character").innerHTML = String.fromCodePoint(randomIntFromInterval(65, 90))
+			document.getElementById("character").innerHTML = String.fromCodePoint(randomIntFromInterval(65, 90));
 		</script>
 	</body>
 </html>
