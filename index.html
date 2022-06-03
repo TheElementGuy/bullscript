@@ -17,7 +17,7 @@
 			}
 		</style>
 		<script>
-			var char, charset, character;
+			var char, charSet, character, charSetName, trueButton;
 			function randomIntFromInterval(min, max) { // min and max included 
 				return Math.floor(Math.random() * (max - min + 1) + min);
 			}
@@ -32,24 +32,30 @@
 	</head>
 	<body>
 		<p id="character"></p>
-		<button>Clicky</button>
+		<button id="trueButton">Clicky</button>
 		<script>
 			character = document.getElementById("character");
+			trueButton = document.getElementById("trueButton");
 			charset = randomIntFromInterval(1,4);
 			if (charset == 1) {
 				char = randomIntFromInterval(33, 127);
 				character.style.fontFamily = "Noto Sans";
-				} else if (charset == 2) {
+				charSetName = "Basic Latin (ASCII)";
+			} else if (charset == 2) {
 				char = randomIntFromInterval(128,255);
 				character.style.fontFamily = "Noto Sans";
+				charSetName = "Latin-1 Supplement";
 			} else if (charset == 3) {
 				char = randomIntFromInterval(1424, 1535);
 				character.style.fontFamily = "Noto Sans Hebrew";
+				charSetName = "Hebrew";
 			} else {
 				char = randomIntFromInterval(19968, 40959);
 				character.style.fontFamily = "Noto Sans Chinese";
+				charSetName = "CJK Unified Ideographs (Han)";
 			}
 			character.innerHTML = String.fromCodePoint(char);
+			trueButton.innerHTML = charSetName;
 		</script>
 	</body>
 </html>
