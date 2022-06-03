@@ -18,6 +18,7 @@
 			}
 		</style>
 		<script>
+			var char, charset, character;
 			function randomIntFromInterval(min, max) { // min and max included 
 				return Math.floor(Math.random() * (max - min + 1) + min);
 			}
@@ -26,19 +27,21 @@
 	<body>
 		<p id="character"></p>
 		<script>
-			var char;
-			var charset;
-			charset = randomIntFromInterval(1,4);
-			if (charset == 1) {
-				char = randomIntFromInterval(0, 127);
-			} else if (charset == 2) {
-				char = randomIntFromInterval(128,255);
-			} else if (charset == 3) {
-				char = randomIntFromInterval(1424, 1535);
-			} else {
-				char = randomIntFromInterval(19968, 40959);
+			character = document.getElementById("character");
+			while (1 == 1) {
+				charset = randomIntFromInterval(1,4);
+				if (charset == 1) {
+					char = randomIntFromInterval(0, 127);
+				} else if (charset == 2) {
+					char = randomIntFromInterval(128,255);
+				} else if (charset == 3) {
+					char = randomIntFromInterval(1424, 1535);
+				} else {
+					char = randomIntFromInterval(19968, 40959);
+				}
+				character.innerHTML = String.fromCodePoint(char);
+				wait(1000);
 			}
-			document.getElementById("character").innerHTML = String.fromCodePoint(char);
 		</script>
 	</body>
 </html>
