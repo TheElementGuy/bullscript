@@ -4,11 +4,21 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Bullscript | A game about Unicode.</title>
+		<style>
+			#character {
+				text-align: center;
+			}
+		</style>
+		<script>
+			function randomIntFromInterval(min, max) { // min and max included 
+				return Math.floor(Math.random() * (max - min + 1) + min)
+			}
+		</script>
 	</head>
 	<body>
 		<p id="character"></p>
 		<script>
-			document.getElementByID("character").innerHTML = String.fromCodePoint(Math.floor(Math.random() * (1114112)))
+			document.getElementByID("character").innerHTML = String.fromCodePoint(randomIntFromInterval(65, 90))
 		</script>
 	</body>
 </html>
