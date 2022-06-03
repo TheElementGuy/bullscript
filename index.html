@@ -22,6 +22,13 @@
 			function randomIntFromInterval(min, max) { // min and max included 
 				return Math.floor(Math.random() * (max - min + 1) + min);
 			}
+			function sleep(milliseconds) {
+				const date = Date.now();
+				let currentDate = null;
+				do {
+					currentDate = Date.now();
+				} while (currentDate - date < milliseconds);
+			}
 		</script>
 	</head>
 	<body>
@@ -41,7 +48,7 @@
 					char = randomIntFromInterval(19968, 40959);
 				}
 				character.innerHTML = String.fromCodePoint(char);
-				wait(1000);
+				sleep(1000);
 			}
 		</script>
 	</body>
