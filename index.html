@@ -34,24 +34,21 @@
 		<p id="character"></p>
 		<script>
 			character = document.getElementById("character");
-			while (true) {
-				charset = randomIntFromInterval(1,4);
-				if (charset == 1) {
-					char = randomIntFromInterval(0, 127);
-					character.style.fontFamily = "Noto Sans";
+			charset = randomIntFromInterval(1,4);
+			if (charset == 1) {
+				char = randomIntFromInterval(0, 127);
+				character.style.fontFamily = "Noto Sans";
 				} else if (charset == 2) {
-					char = randomIntFromInterval(128,255);
-					character.style.fontFamily = "Noto Sans";
-				} else if (charset == 3) {
-					char = randomIntFromInterval(1424, 1535);
-					character.style.fontFamily = "Noto Sans Hebrew";
-				} else {
-					char = randomIntFromInterval(19968, 40959);
-					character.style.fontFamily = "Noto Sans Chinese";
-				}
-				character.innerHTML = String.fromCodePoint(char);
-				sleep(1000);
+				char = randomIntFromInterval(128,255);
+				character.style.fontFamily = "Noto Sans";
+			} else if (charset == 3) {
+				char = randomIntFromInterval(1424, 1535);
+				character.style.fontFamily = "Noto Sans Hebrew";
+			} else {
+				char = randomIntFromInterval(19968, 40959);
+				character.style.fontFamily = "Noto Sans Chinese";
 			}
+			character.innerHTML = String.fromCodePoint(char);
 		</script>
 	</body>
 </html>
