@@ -15,21 +15,24 @@
 				font-size: 7em;
 				margin: 10px;
 			}
-			#trueButton {
+			button {
 				font-family: "Noto Sans";
 				font-size: 3em;
-				border-color: red;
-				background-color: black;
-				color: white;
 				transition-duration: 0.1s;
 				border-width: 1%;
 				width: 42%;
 				margin: 3%;
+				color: white;
+			}
+			button:hover {
+				color: black;
+			}
+			#trueButton {
+				border-color: red;
+				background-color: black;
 			}
 			#trueButton:hover {
 				background-color: red;
-				color: black;
-				transition-duration: 0.1s;
 			}
 		</style>
 		<script>
@@ -48,7 +51,8 @@
 	</head>
 	<body>
 		<p id="character"></p>
-		<button id="trueButton">Clicky</button>
+		<button id="trueButton"></button>
+		<button>CLicky</button>
 		<script>
 			character = document.getElementById("character");
 			trueButton = document.getElementById("trueButton");
