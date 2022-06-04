@@ -67,6 +67,7 @@
 			character.innerHTML = String.fromCodePoint(char);
 			correctButton = randomIntFromInterval(0, buttons.length - 1);
 			buttons[correctButton].innerHTML = charSetName;
+			usedValues.push(charSetName);
 			for (let i = 0; i < buttons.length; i++) {
 				if (i !== correctButton) {
 					falseCharSet = randomIntFromInterval(0, charSetList.length - 1);
