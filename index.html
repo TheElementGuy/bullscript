@@ -71,6 +71,7 @@
 			usedValues.push(charSetName);
 			for (let i = 0; i < buttons.length; i++) {
 				if (i !== correctButton) {
+					falseCharSet = randomIntFromInterval(0, charSetList.length - 1);
 					while (usedValues.includes(charSetList[falseCharSet])) {
 						falseCharSet = randomIntFromInterval(0, charSetList.length - 1);
 					}
