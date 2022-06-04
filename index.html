@@ -11,6 +11,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Hebrew&family=Noto+Sans+SC&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<title>Bullscript | A game about Unicode.</title>
 		<style>
 			body {
@@ -49,10 +50,10 @@
 			#button2:hover {
 				background-color: blue;
 			}
-			#answer {
+			#next {
 				border-color: black;
 			}
-			#answer:hover {
+			#next:hover {
 				color: white;
 			}
 		</style>
@@ -68,11 +69,23 @@
 		</script>
 	</head>
 	<body>
-		<p id="character"></p>
-		<button id="button1" onclick="verify(this);"></button>
-		<button id="button2" onclick="verify(this);"></button>
-		<p id="answer"></p>
-		<button onclick="setup();">Next</button>
+		<div class="w3-container">
+			<div class="w3-container">
+				<p id="character"></p>
+			</div>
+			<div class="w3-container w3-half">
+				<button id="button1" onclick="verify(this);"></button>
+			</div>
+			<div class="w3-container w3-half">
+				<button id="button2" onclick="verify(this);"></button>
+			</div>
+			<div class="w3-container">
+				<p id="answer"></p>
+			</div>
+			<div class="w3-container">
+				<button id="next" onclick="setup();">Next</button>
+			</div>
+		</div>
 		<script>
 			function setup() {
 				usedValues = [];
