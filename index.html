@@ -19,11 +19,13 @@
 				font-family: "Noto Sans";
 				font-size: 3em;
 				transition-duration: 0.1s;
+				border-style: solid;
 				border-width: 1%;
-				width: 42%;
+				width: 41%;
 				margin: 3%;
 				color: white;
 				background-color: black;
+				height: 20%;
 			}
 			button:hover {
 				color: black;
@@ -42,19 +44,12 @@
 			}
 		</style>
 		<script>
-			var char, charSet, character, charSetName, buttons;
-			var charSetList = ["Basic Latin (ASCII)", "Latin-1 Supplement", "Hebrew", "Hebrew", "Hebrew", "CJK Unified Ideographs (Han)"];
-			var charSetFirstNumInIntervalList = [33, 161, 1425, 1488, 1519, 19968];
-			var charSetLastNumInIntervalList = [127, 255, 1479, 1512, 1524, 40959];
+			var char, charSet, character, charSetName, buttons, correctButton, falseCharSet, usedValues;
+			const charSetList = ["Basic Latin (ASCII)", "Latin-1 Supplement", "Hebrew", "Hebrew", "Hebrew", "CJK Unified Ideographs (Han)"];
+			const charSetFirstNumInIntervalList = [33, 161, 1425, 1488, 1519, 19968];
+			const charSetLastNumInIntervalList = [127, 255, 1479, 1512, 1524, 40959];
 			function randomIntFromInterval(min, max) { // min and max included 
 				return Math.floor(Math.random() * (max - min + 1) + min);
-			}
-			function sleep(milliseconds) {
-				const date = Date.now();
-				let currentDate = null;
-				do {
-					currentDate = Date.now();
-				} while (currentDate - date < milliseconds);
 			}
 		</script>
 	</head>
@@ -63,13 +58,24 @@
 		<button id="button1"></button>
 		<button id="button2">CLicky</button>
 		<script>
+			usedValues = [];
 			character = document.getElementById("character");
 			buttons = [document.getElementById("button1"), document.getElementById("button2")];
 			charSet = randomIntFromInterval(0, charSetList.length - 1);
 			char = randomIntFromInterval(charSetFirstNumInIntervalList[charSet], charSetLastNumInIntervalList[charSet]);
 			charSetName = charSetList[charSet];
 			character.innerHTML = String.fromCodePoint(char);
-			buttons[randomIntFromInterval(0, buttons.length - 1)].innerHTML = charSetName;
+			correctButton = randomIntFromInterval(0, buttons.length - 1);
+			buttons[correctButton].innerHTML = charSetName;
+			for (let i = 0; i < buttons.length; i++) {
+				if (i !== correctButton) {
+					falseCharSet = randomIntFromInterval(0, charSetList.length - 1);
+					if (!usedValues.includes(charSetList[falseCharSet])) {
+						buttons[i].innerHTML = charSetList[falseCharSet];
+						usedValues.push(charSetList[falseCharSet]);
+					}
+				}
+			}
 		</script>
 	</body>
 </html>
