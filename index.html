@@ -81,7 +81,10 @@
 			}
 			character.style.fontFamily = fontList[charSet];
 			function verify() {
-				console.log("u clicked una buttona")
+				console.log(this);
+				if (this.innerHTML === charSetName) {
+					console.log("Nice.");
+				}
 			}
 		</script>
 	</body>
