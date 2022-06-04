@@ -23,20 +23,29 @@
 				width: 42%;
 				margin: 3%;
 				color: white;
+				background-color: black;
 			}
 			button:hover {
 				color: black;
 			}
-			#trueButton {
+			#button1 {
 				border-color: red;
-				background-color: black;
 			}
-			#trueButton:hover {
+			#button1:hover {
 				background-color: red;
+			}
+			#button2 {
+				border-color: yellow;
+			}
+			#button2:hover {
+				background-color: yellow;
 			}
 		</style>
 		<script>
-			var char, charSet, character, charSetName, trueButton;
+			var char, charSet, character, charSetName, buttons;
+			var charSetList = ["Basic Latin (ASCII)", "Latin-1 Supplement", "Hebrew", "Hebrew", "Hebrew", "CJK Unified Ideographs (Han)"];
+			var charSetFirstNumInIntervalList = [33, 161, 1425, 1488, 1519, 19968];
+			var charSetLastNumInIntervalList = [127, 255, 1479, 1512, 1524, 40959];
 			function randomIntFromInterval(min, max) { // min and max included 
 				return Math.floor(Math.random() * (max - min + 1) + min);
 			}
@@ -51,31 +60,16 @@
 	</head>
 	<body>
 		<p id="character"></p>
-		<button id="trueButton"></button>
-		<button>CLicky</button>
+		<button id="button1"></button>
+		<button id="button2">CLicky</button>
 		<script>
 			character = document.getElementById("character");
-			trueButton = document.getElementById("trueButton");
-			charset = randomIntFromInterval(1,4);
-			if (charset == 1) {
-				char = randomIntFromInterval(33, 127);
-				character.style.fontFamily = "Noto Sans";
-				charSetName = "Basic Latin (ASCII)";
-			} else if (charset == 2) {
-				char = randomIntFromInterval(128,255);
-				character.style.fontFamily = "Noto Sans";
-				charSetName = "Latin-1 Supplement";
-			} else if (charset == 3) {
-				char = randomIntFromInterval(1424, 1535);
-				character.style.fontFamily = "Noto Sans Hebrew";
-				charSetName = "Hebrew";
-			} else {
-				char = randomIntFromInterval(19968, 40959);
-				character.style.fontFamily = "Noto Sans Chinese";
-				charSetName = "CJK Unified Ideographs (Han)";
-			}
+			buttons = [document.getElementById("button1"), document.getElementById("button2")];
+			charSet = randomIntFromInterval(0, charSetList.length - 1);
+			char = randomIntFromInterval(charSetFirstNumInIntervalList[charSet], charSetLastNumInIntervalList[charSet]);
+			charSetName = charSetList[charSet];
 			character.innerHTML = String.fromCodePoint(char);
-			trueButton.innerHTML = charSetName;
+			buttons[randomIntFromInterval(0, buttons.length - 1)].innerHTML = charSetName;
 		</script>
 	</body>
 </html>
