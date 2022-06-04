@@ -16,12 +16,12 @@
 				font-family: "Noto Sans";
 			}
 			p {
-				font-size: 6em;
+				font-size: 7em;
 				margin: 10px;
 			}
 			button {
 				font-family: "Noto Sans";
-				font-size: 2em;
+				font-size: 3em;
 				transition-duration: 0.1s;
 				border-style: solid;
 				border-width: 1%;
@@ -63,6 +63,7 @@
 		<button id="button1" onclick="verify(this);"></button>
 		<button id="button2" onclick="verify(this);"></button>
 		<p id="answer"></p>
+		<button onclick="setup();">Next</button>
 		<script>
 			function setup() {
 				usedValues = [];
@@ -94,7 +95,6 @@
 				} else {
 					document.getElementById("answer").innerHTML = "Wrong";
 				}
-				setup();
 			}
 			setup();
 		</script>
