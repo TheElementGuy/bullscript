@@ -10,11 +10,17 @@
 		<link rel="manifest" href="https://jpermsolves.github.io/bull-script/site.webmanifest">
 		<title>Bullscript | A game about Unicode.</title>
 		<style>
-			#character {
+			body {
 				text-align: center;
 				font-size: 7em;
 				margin: 10px;
+				font-family: "Noto Sans";
 			}
+			/*#character {
+				text-align: center;
+				font-size: 7em;
+				margin: 10px;
+			}*/
 			button {
 				font-family: "Noto Sans";
 				font-size: 3em;
@@ -90,9 +96,9 @@
 				} else {
 					document.getElementById("answer").innerHTML = "Wrong";
 				}
-				setUp();
+				setup();
 			}
-			setUp();
+			setup();
 		</script>
 	</body>
 </html>
