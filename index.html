@@ -48,6 +48,7 @@
 			const charSetList = ["Basic Latin (ASCII)", "Latin-1 Supplement", "Hebrew", "Hebrew", "Hebrew", "CJK Unified Ideographs (Han)"];
 			const charSetFirstNumInIntervalList = [33, 161, 1425, 1488, 1519, 19968];
 			const charSetLastNumInIntervalList = [127, 255, 1479, 1512, 1524, 40959];
+			const fontList = ["Noto Sans", "Noto Sans", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans Chinese"]
 			function randomIntFromInterval(min, max) { // min and max included 
 				return Math.floor(Math.random() * (max - min + 1) + min);
 			}
@@ -77,6 +78,7 @@
 					}
 				}
 			}
+			character.style.fontFamily = fontList[charSet];
 		</script>
 	</body>
 </html>
