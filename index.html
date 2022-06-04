@@ -60,27 +60,29 @@
 		<button id="button2" onclick="verify(this);"></button>
 		<p id="answer"></p>
 		<script>
-			usedValues = [];
-			character = document.getElementById("character");
-			buttons = [document.getElementById("button1"), document.getElementById("button2")];
-			charSet = randomIntFromInterval(0, charSetList.length - 1);
-			char = randomIntFromInterval(charSetFirstNumInIntervalList[charSet], charSetLastNumInIntervalList[charSet]);
-			charSetName = charSetList[charSet];
-			character.innerHTML = String.fromCodePoint(char);
-			correctButton = randomIntFromInterval(0, buttons.length - 1);
-			buttons[correctButton].innerHTML = charSetName;
-			usedValues.push(charSetName);
-			for (let i = 0; i < buttons.length; i++) {
-				if (i !== correctButton) {
-					falseCharSet = randomIntFromInterval(0, charSetList.length - 1);
-					while (usedValues.includes(charSetList[falseCharSet])) {
+			function setup() {
+				usedValues = [];
+				character = document.getElementById("character");
+				buttons = [document.getElementById("button1"), document.getElementById("button2")];
+				charSet = randomIntFromInterval(0, charSetList.length - 1);
+				char = randomIntFromInterval(charSetFirstNumInIntervalList[charSet], charSetLastNumInIntervalList[charSet]);
+				charSetName = charSetList[charSet];
+				character.innerHTML = String.fromCodePoint(char);
+				correctButton = randomIntFromInterval(0, buttons.length - 1);
+				buttons[correctButton].innerHTML = charSetName;
+				usedValues.push(charSetName);
+				for (let i = 0; i < buttons.length; i++) {
+					if (i !== correctButton) {
 						falseCharSet = randomIntFromInterval(0, charSetList.length - 1);
+						while (usedValues.includes(charSetList[falseCharSet])) {
+							falseCharSet = randomIntFromInterval(0, charSetList.length - 1);
+						}
+						buttons[i].innerHTML = charSetList[falseCharSet];
+						usedValues.push(charSetList[falseCharSet]);
 					}
-					buttons[i].innerHTML = charSetList[falseCharSet];
-					usedValues.push(charSetList[falseCharSet]);
 				}
-			}
-			character.style.fontFamily = fontList[charSet];
+				character.style.fontFamily = fontList[charSet];
+				}
 			function verify(button) {
 				if (button.innerHTML === charSetName) {
 					console.log("Nice.");
@@ -88,7 +90,9 @@
 				} else {
 					document.getElementById("answer").innerHTML = "Wrong";
 				}
+				setUp();
 			}
+			setUp();
 		</script>
 	</body>
 </html>
