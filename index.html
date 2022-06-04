@@ -58,6 +58,7 @@
 		<p id="character"></p>
 		<button id="button1" onclick="verify(this);"></button>
 		<button id="button2" onclick="verify(this);"></button>
+		<p id="answer"></p>
 		<script>
 			usedValues = [];
 			character = document.getElementById("character");
@@ -81,9 +82,11 @@
 			}
 			character.style.fontFamily = fontList[charSet];
 			function verify(button) {
-				console.log(button);
 				if (button.innerHTML === charSetName) {
 					console.log("Nice.");
+					document.getElementById("answer").innerHTML = "Correct";
+				} else {
+					document.getElementById("answer").innerHTML = "Wrong";
 				}
 			}
 		</script>
