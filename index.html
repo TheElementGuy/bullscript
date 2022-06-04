@@ -71,11 +71,11 @@
 			usedValues.push(charSetName);
 			for (let i = 0; i < buttons.length; i++) {
 				if (i !== correctButton) {
-					falseCharSet = randomIntFromInterval(0, charSetList.length - 1);
-					if (!usedValues.includes(charSetList[falseCharSet])) {
-						buttons[i].innerHTML = charSetList[falseCharSet];
-						usedValues.push(charSetList[falseCharSet]);
+					while (usedValues.includes(charSetList[falseCharSet])) {
+						falseCharSet = randomIntFromInterval(0, charSetList.length - 1);
 					}
+					buttons[i].innerHTML = charSetList[falseCharSet];
+					usedValues.push(charSetList[falseCharSet]);
 				}
 			}
 			character.style.fontFamily = fontList[charSet];
