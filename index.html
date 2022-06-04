@@ -56,8 +56,8 @@
 	</head>
 	<body>
 		<p id="character"></p>
-		<button id="button1"></button>
-		<button id="button2"></button>
+		<button id="button1" onclick="verify();"></button>
+		<button id="button2" onclick="verify();"></button>
 		<script>
 			usedValues = [];
 			character = document.getElementById("character");
@@ -80,8 +80,8 @@
 				}
 			}
 			character.style.fontFamily = fontList[charSet];
-			document.getElementsByTagName("button").onclick = function () {
-				console.log("u clicked una buttona");
+			function verify() {
+				console.log("u clicked una buttona")
 			}
 		</script>
 	</body>
