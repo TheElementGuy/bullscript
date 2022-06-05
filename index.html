@@ -59,6 +59,7 @@
 		</div>
 		<script>
 			function setup() {
+				clickable = true;
 				usedValues = [];
 				character = document.getElementById("character");
 				buttons = [document.getElementById("button1"), document.getElementById("button2")];
@@ -81,15 +82,18 @@
 				}
 				document.getElementById("answer").innerHTML = "";
 				character.style.fontFamily = fontList[charSet];
-				}
+			}
 			function verify(button) {
-				if (button.innerHTML === charSetName) {
-					console.log("Nice.");
-					document.getElementById("answer").innerHTML = "Correct";
-					document.getElementById("answer").style.color = "green";
-				} else {
-					document.getElementById("answer").innerHTML = "Wrong";
-					document.getElementById("answer").style.color = "red";
+				if (clickable) {
+					if (button.innerHTML === charSetName) {
+						console.log("Nice.");
+						document.getElementById("answer").innerHTML = "Correct";
+						document.getElementById("answer").style.color = "green";
+					} else {
+						document.getElementById("answer").innerHTML = "Wrong";
+						document.getElementById("answer").style.color = "red";
+					}
+					clickable = false;
 				}
 			}
 			setup();
