@@ -30,10 +30,10 @@
 		</style>
 		<script>
 			var char, charSet, character, charSetName, buttons, correctButton, falseCharSet, usedValues;
-			const charSetList = ["Basic Latin (ASCII)", "Latin-1 Supplement", "Hebrew", "Hebrew", "Hebrew", "CJK Unified Ideographs (Han)", "Arabic", "Javanese", "Javanese", "Javanese", "Hiragana", "Hiragana"];
-			const charSetFirstNumInIntervalList = [33, 161, 1425, 1488, 1519, 19968, 1537, 43392, 43471, 43486, 12353, 12441];
-			const charSetLastNumInIntervalList = [127, 255, 1479, 1512, 1524, 40959, 1791, 43469, 43481, 43487, 12438, 12447];
-			const fontList = ["Noto Sans", "Noto Sans", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans SC", "Noto Sans Arabic", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Japanese", "Noto Sans Japanese"]
+			const charSetList = ["Basic Latin (ASCII)", "Latin-1 Supplement", "Hebrew", "Hebrew", "Hebrew", "CJK Unified Ideographs (Han)", "Arabic", "Javanese", "Javanese", "Javanese", "Hiragana", "Hiragana", "Cyrillic"];
+			const charSetFirstNumInIntervalList = [33, 161, 1425, 1488, 1519, 19968, 1537, 43392, 43471, 43486, 12353, 12441, 1024];
+			const charSetLastNumInIntervalList = [127, 255, 1479, 1512, 1524, 40959, 1791, 43469, 43481, 43487, 12438, 12447, 1279];
+			const fontList = ["Noto Sans", "Noto Sans", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans SC", "Noto Sans Arabic", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Japanese", "Noto Sans Japanese", "Noto Sans"]
 			function randomIntFromInterval(min, max) { // min and max included 
 				return Math.floor(Math.random() * (max - min + 1) + min);
 			}
