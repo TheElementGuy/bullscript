@@ -51,10 +51,10 @@
 				<button id="button2" class="w3-button w3-block w3-indigo" onclick="verify(this);"></button>
 			</div>
 			<div class="w3-container">
-				<p id="answer"></p>
+				<button id="next" class="w3-button w3-block w3-black" onclick="setup();">Next</button>
 			</div>
 			<div class="w3-container">
-				<button id="next" class="w3-button w3-block w3-black" onclick="setup();">Next</button>
+				<p id="answer"></p>
 			</div>
 		</div>
 		<script>
@@ -86,8 +86,10 @@
 				if (button.innerHTML === charSetName) {
 					console.log("Nice.");
 					document.getElementById("answer").innerHTML = "Correct";
+					document.getElementById("answer").style.color = "green";
 				} else {
 					document.getElementById("answer").innerHTML = "Wrong";
+					document.getElementById("answer").style.color = "red";
 				}
 			}
 			setup();
