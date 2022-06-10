@@ -125,12 +125,9 @@
 			function verify(button) {
 				if (clickable) {
 					if (button.innerHTML === charSetName) {
-						console.log("Nice.");
-						document.getElementById("answer").innerHTML = "Correct";
-						document.getElementById("answer").style.color = "green";
+						button.class = "w3-button w3-block w3-green w3-xxlarge";
 					} else {
-						document.getElementById("answer").innerHTML = "Wrong";
-						document.getElementById("answer").style.color = "red";
+						button.class = "w3-button w3-block w3-red w3-xxlarge";
 					}
 					clickable = false;
 				}
