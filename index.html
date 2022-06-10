@@ -73,7 +73,7 @@
 			<div class="w3-container"> 
 				<div class="w3-cell-row">
 					<div class="w3-cell">
-						<button id="button1" class="w3-button w3-block w3-black w3-xxlarge" onclick="verify(this);"></button>
+						< id="button1" class="w3-button w3-block w3-black w3-xxlarge" onclick="verify(this);"></button>
 					</div>
 					<div class="w3-cell">
 						<button id="button2" class="w3-button w3-block w3-black w3-xxlarge" onclick="verify(this);"></button>
@@ -125,9 +125,9 @@
 			function verify(button) {
 				if (clickable) {
 					if (button.innerHTML === charSetName) {
-						button.class = "w3-button w3-block w3-green w3-xxlarge";
+						button.className = "w3-button w3-block w3-green w3-xxlarge";
 					} else {
-						button.class = "w3-button w3-block w3-red w3-xxlarge";
+						button.className = "w3-button w3-block w3-red w3-xxlarge";
 					}
 					clickable = false;
 				}
