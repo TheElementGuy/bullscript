@@ -67,10 +67,10 @@
 			<div class="w3-container"> 
 				<div class="w3-cell-row">
 					<div class="w3-cell">
-						<button id="button1" class="w3-button w3-block w3-black w3-xxlarge" onclick="verify(this);"></button>
+						<button id="button1" class="w3-button w3-block w3-black w3-xxlarge" onclick="verify();"></button>
 					</div>
 					<div class="w3-cell">
-						<button id="button2" class="w3-button w3-block w3-black w3-xxlarge" onclick="verify(this);"></button>
+						<button id="button2" class="w3-button w3-block w3-black w3-xxlarge" onclick="verify();"></button>
 					</div>
 				</div>
 			</div>
@@ -120,7 +120,7 @@
 			}
 			function verify() {
 				if (clickable) {
-					correctButton.className = "w3-button w3-green w3-block w3-xxlarge w3-hover-green";
+					buttons[correctButton].className = "w3-button w3-green w3-block w3-xxlarge w3-hover-green";
 					for (let i = 0; i < wrongButtons.length; i++) {
 						wrongButtons[i].className = "w3-button w3-red w3-block w3-xxlarge w3-hover-red";
 					}
