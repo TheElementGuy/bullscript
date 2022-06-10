@@ -50,6 +50,7 @@
 			const charSetFirstNumInIntervalList = [33, 161, 1425, 1488, 1519, 19968, 1537, 43392, 43471, 43486, 12353, 12441];
 			const charSetLastNumInIntervalList = [127, 255, 1479, 1512, 1524, 40959, 1791, 43469, 43481, 43487, 12438, 12447];
 			const fontList = ["Noto Sans", "Noto Sans", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans SC", "Noto Sans Arabic", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Japanese", "Noto Sans Japanese"]
+			const wrongButtons = [];
 			function randomIntFromInterval(min, max) { // min and max included 
 				return Math.floor(Math.random() * (max - min + 1) + min);
 			}
@@ -110,19 +111,19 @@
 							falseCharSet = randomIntFromInterval(0, charSetList.length - 1);
 						}
 						buttons[i].innerHTML = charSetList[falseCharSet];
+						wrongButtons.push(buttons[i]);
 						usedValues.push(charSetList[falseCharSet]);
 					}
+					buttons[i].className = "w3-button w3-black w3-block w3-xxlarge";
 				}
 				character.style.fontFamily = fontList[charSet];
 			}
-			function verify(button) {
+			function verify() {
 				if (clickable) {
-					if (button.innerHTML === charSetName) {
-						button.className = "w3-button w3-block w3-green w3-xxlarge";
-					} else {
-						button.className = "w3-button w3-block w3-red w3-xxlarge";
+					correctButton.className = "w3-button w3-green w3-block w3-xxlarge";
+					for (let i = 0; i < wrongButtons.length; i++) {
+						wrongButtons[i].className = "w3-button w3-red w3-block w3-xxlarge";
 					}
-					clickable = false;
 				}
 			}
 			setup();
