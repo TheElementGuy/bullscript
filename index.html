@@ -24,6 +24,7 @@
 			button {
 				font-family: "Noto Sans";
 				white-space: normal !important;
+				height: 100%;
 			}
 			.material-symbols-outlined {
 				font-variation-settings:
@@ -42,7 +43,6 @@
 			}
 			.w3-cell {
 				width: 50%;
-				height: 100%;
 			}
 		</style>
 		<script>
@@ -107,6 +107,19 @@
 			function randomIntFromInterval(min, max) { // min and max included 
 				return Math.floor(Math.random() * (max - min + 1) + min);
 			}
+			function equalButtons(); {
+				var buttonList = buttons;
+				var button = 0;
+				if (buttonList.length % 2 == 1) {
+					buttonList.pop();
+				}
+				for (let i = 0; i < buttonList.length / 2 - 1; i += 2) {
+					if (buttonList[i].style.height != buttonList[i + 1].style.height) {
+						buttonList[i].style.height = max(buttonList[i].style.height, buttonList[i + 1].style.height);
+						buttonList[i + 1].style.height = max(buttonList[i].style.height, buttonList[i + 1].style.height);
+					}
+				}
+			}
 			function setup() {
 				wrongButtons = [];
 				clickable = true;
@@ -132,6 +145,7 @@
 				}
 				character.style.fontFamily = fontList[charSet];
 				instructions.innerHTML = "Click one";
+				equalButtons();
 			}
 			function verify(button) {
 				if (clickable) {
