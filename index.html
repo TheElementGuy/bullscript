@@ -31,7 +31,7 @@
 				'wght' 400,
 				'GRAD' 0,
 				'opsz' 48;
-				font-size: 2em;
+				font-size: 5em;
 			}
 			.menu-bar {
 				font-size: 4em;
@@ -51,6 +51,11 @@
 			const charSetFirstNumInIntervalList = [33, 161, 1425, 1488, 1519, 19968, 1537, 43392, 43471, 43486, 12353, 12441];
 			const charSetLastNumInIntervalList = [127, 255, 1479, 1512, 1524, 40959, 1791, 43469, 43481, 43487, 12438, 12447];
 			const fontList = ["Noto Sans", "Noto Sans", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans SC", "Noto Sans Arabic", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Japanese", "Noto Sans Japanese"]
+			const happyPhrases = ["Amazing", "Nice", "Whoa!", "Whoo!"];
+			let character, buttons, instructions;
+			character = document.getElementById("character");
+			buttons = document.getElementsByTagName("button");
+			instructions = document.getElementById("instructions")
 			function randomIntFromInterval(min, max) { // min and max included 
 				return Math.floor(Math.random() * (max - min + 1) + min);
 			}
@@ -78,7 +83,7 @@
 				<button id="next" class="w3-button w3-block w3-black w3-xxlarge" onclick="setup();">Next</button>
 			</div>
 			<div class="w3-container">
-				<p class="w3-xxlarge" id="answer">Click one</p>
+				<p class="w3-xxlarge" id="instructions">Click one</p>
 			</div>
 		</div>
 		<footer class="w3-container">
@@ -96,8 +101,6 @@
 				wrongButtons = [];
 				clickable = true;
 				usedValues = [];
-				character = document.getElementById("character");
-				buttons = [document.getElementById("button1"), document.getElementById("button2")];
 				charSet = randomIntFromInterval(0, charSetList.length - 1);
 				char = randomIntFromInterval(charSetFirstNumInIntervalList[charSet], charSetLastNumInIntervalList[charSet]);
 				charSetName = charSetList[charSet];
@@ -122,6 +125,7 @@
 			function verify() {
 				if (clickable) {
 					buttons[correctButton].className = "w3-button w3-green w3-block w3-xxlarge w3-hover-green";
+					instructions.innerHTML = happyPhrases[randomIntFromInterval(0, happyPhrases.length - 1)];
 					for (let i = 0; i < wrongButtons.length; i++) {
 						wrongButtons[i].className = "w3-button w3-red w3-block w3-xxlarge w3-hover-red";
 					}
