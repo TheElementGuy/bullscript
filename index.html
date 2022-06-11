@@ -101,7 +101,7 @@
 			const happyPhrases = ["Amazing", "Nice", "Whoa!", "Whoo!"];
 			let character, buttons, instructions;
 			character = document.getElementById("character");
-			buttons = document.getElementsByClassName("choice");
+			buttons = document.querySelectorAll(".choice");
 			instructions = document.getElementById("instructions")
 			function randomIntFromInterval(min, max) { // min and max included 
 				return Math.floor(Math.random() * (max - min + 1) + min);
