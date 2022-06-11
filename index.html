@@ -60,10 +60,18 @@
 			<div class="w3-container"> 
 				<div class="w3-cell-row">
 					<div class="w3-cell">
-						<button id="button1" class="w3-button w3-block w3-black w3-xxlarge" onclick="verify();"></button>
+						<button id="button1" class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify();"></button>
 					</div>
 					<div class="w3-cell">
-						<button id="button2" class="w3-button w3-block w3-black w3-xxlarge" onclick="verify();"></button>
+						<button id="button2" class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify();"></button>
+					</div>
+				</div>
+				<div class="w3-cell-row">
+					<div class="w3-cell">
+						<button id="button1" class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify();"></button>
+					</div>
+					<div class="w3-cell">
+						<button id="button2" class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify();"></button>
 					</div>
 				</div>
 			</div>
@@ -93,7 +101,7 @@
 			const happyPhrases = ["Amazing", "Nice", "Whoa!", "Whoo!"];
 			let character, buttons, instructions;
 			character = document.getElementById("character");
-			buttons = document.getElementsByTagName("button");
+			buttons = document.getElementsByClassName("choice");
 			instructions = document.getElementById("instructions")
 			function randomIntFromInterval(min, max) { // min and max included 
 				return Math.floor(Math.random() * (max - min + 1) + min);
