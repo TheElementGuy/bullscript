@@ -60,18 +60,18 @@
 			<div class="w3-container"> 
 				<div class="w3-cell-row">
 					<div class="w3-cell w3-mobile">
-						<button class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify();"></button>
+						<button class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify(this);"></button>
 					</div>
 					<div class="w3-cell w3-mobile">
-						<button class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify();"></button>
+						<button class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify(this);"></button>
 					</div>
 				</div>
 				<div class="w3-cell-row">
 					<div class="w3-cell w3-mobile">
-						<button class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify();"></button>
+						<button class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify(this);"></button>
 					</div>
 					<div class="w3-cell w3-mobile">
-						<button class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify();"></button>
+						<button class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify(this);"></button>
 					</div>
 				</div>
 			</div>
@@ -130,13 +130,18 @@
 					buttons[i].className = "w3-button w3-black w3-block w3-xxlarge";
 				}
 				character.style.fontFamily = fontList[charSet];
+				instructions.innerHTML = "Click one";
 			}
-			function verify() {
+			function verify(button) {
 				if (clickable) {
 					buttons[correctButton].className = "w3-button w3-green w3-block w3-xxlarge w3-hover-green";
-					instructions.innerHTML = happyPhrases[randomIntFromInterval(0, happyPhrases.length - 1)];
 					for (let i = 0; i < wrongButtons.length; i++) {
 						wrongButtons[i].className = "w3-button w3-red w3-block w3-xxlarge w3-hover-red";
+					}
+					if (button.innerHTML === charSetName) {
+						instructions.innerHTML = happyPhrases[randomIntFromInterval(0, happyPhrases.length - 1)];
+					} else {
+						instructions.innerHTML = sadPhrases[randomIntFromInterval(0, sadPhrases.length - 1)];
 					}
 					clickable = false;
 				}
