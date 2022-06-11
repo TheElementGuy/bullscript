@@ -88,7 +88,7 @@
 		<footer class="w3-container">
 			<div class="w3-cell-row">
 				<div class="w3-cell">
-					<button class="w3-button w3-white w3-hover-gray w3-block material-symbols-outlined">brightness_6</button>
+					<button class="w3-button w3-white w3-hover-gray w3-block material-symbols-outlined" onclick="brightMode = !brightMode">brightness_6</button>
 				</div>
 				<div class="w3-cell">
 					<button class="w3-button w3-white w3-hover-gray w3-block material-symbols-outlined">info</button>
@@ -96,7 +96,7 @@
 			</div>
 		</footer>
 		<script>
-			var char, charSet, charSetName, correctButton, falseCharSet, usedValues, wrongButtons;
+			var char, charSet, charSetName, correctButton, falseCharSet, usedValues, wrongButtons, brightMode;
 			const charSetList = ["Basic Latin (ASCII)", "Latin-1 Supplement", "Hebrew", "Hebrew", "Hebrew", "CJK Unified Ideographs (Han)", "Arabic", "Javanese", "Javanese", "Javanese", "Hiragana", "Hiragana"];
 			const charSetFirstNumInIntervalList = [33, 161, 1425, 1488, 1520, 19968, 1537, 43392, 43471, 43486, 12353, 12441];
 			const charSetLastNumInIntervalList = [127, 255, 1479, 1512, 1524, 40959, 1791, 43469, 43481, 43487, 12438, 12447];
@@ -107,6 +107,7 @@
 			character = document.getElementById("character");
 			buttons = document.querySelectorAll(".choice");
 			instructions = document.getElementById("instructions")
+			brightness = true;
 			function randomIntFromInterval(min, max) { // min and max included 
 				return Math.floor(Math.random() * (max - min + 1) + min);
 			}
@@ -144,7 +145,11 @@
 						wrongButtons.push(buttons[i]);
 						usedValues.push(charSetList[falseCharSet]);
 					}
-					buttons[i].className = "w3-button w3-black w3-block w3-xxlarge";
+					if (brightMode) {
+						buttons[i].className = "w3-button w3-white w3-block w3-xxlarge";
+					} else {
+						buttons[i].className = "w3-button w3-black w3-block w3-xxlarge";
+					}
 				}
 				character.style.fontFamily = fontList[charSet];
 				instructions.innerHTML = "Click one";
@@ -163,6 +168,9 @@
 					}
 					clickable = false;
 				}
+			}
+			function lightMode() {
+				var buttonList = document.getElementById
 			}
 			setup();
 		</script>
