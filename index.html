@@ -85,16 +85,18 @@
 				<p class="w3-xxlarge w3-hide-small" id="instructions">Click one</p>
 			</div>
 		</div>
+		<!--
 		<footer class="w3-container">
 			<div class="w3-cell-row">
 				<div class="w3-cell">
-					<button class="w3-button w3-white w3-hover-gray w3-block material-symbols-outlined" onclick="brightMode = !brightMode">brightness_6</button>
+					<button class="w3-button w3-white w3-hover-gray w3-block material-symbols-outlined" onclick="brightMode = !brightMode; toggleBrightness();">brightness_6</button>
 				</div>
 				<div class="w3-cell">
 					<button class="w3-button w3-white w3-hover-gray w3-block material-symbols-outlined">info</button>
 				</div>
 			</div>
 		</footer>
+		-->
 		<script>
 			var char, charSet, charSetName, correctButton, falseCharSet, usedValues, wrongButtons, brightMode;
 			const charSetList = ["Basic Latin (ASCII)", "Latin-1 Supplement", "Hebrew", "Hebrew", "Hebrew", "CJK Unified Ideographs (Han)", "Arabic", "Javanese", "Javanese", "Javanese", "Hiragana", "Hiragana"];
@@ -169,8 +171,17 @@
 					clickable = false;
 				}
 			}
-			function lightMode() {
-				var buttonList = document.getElementById
+			function toggleBrightness() {
+				var buttonList = document.getElementByTagName('button');
+				if (brightMode) {
+					for (let i = 0; i < buttonList.length - 1; i++) {
+						buttonList[i].className = buttonList[i].className.replace(/w3-black/i, "w3-gray");
+					}
+				} else {
+					for (let i = 0; i < buttonList.length - 1; i++) {
+						buttonList[i].className = buttonList[i].className.replace(/w3-gray/i, "w3-black");
+					}
+				}
 			}
 			setup();
 		</script>
