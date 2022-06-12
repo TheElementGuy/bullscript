@@ -172,7 +172,7 @@
 				}
 			}
 			function toggleBrightness() {
-				var buttonList = document.getElementByTagName('button');
+				var buttonList = document.getElementsByTagName('button');
 				if (brightMode) {
 					for (let i = 0; i < buttonList.length - 1; i++) {
 						buttonList[i].className = buttonList[i].className.replace(/w3-black/i, "w3-gray");
