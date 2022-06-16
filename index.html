@@ -4,65 +4,129 @@
 		<base href="https://jpermsolves.github.io/bull-script">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="apple-touch-icon" sizes="180x180" href="https://jpermsolves.github.io/bull-script/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="https://jpermsolves.github.io/bull-script/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="https://jpermsolves.github.io/bull-script/favicon-16x16.png">
-		<link rel="manifest" href="https://jpermsolves.github.io/bull-script/site.webmanifest">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://jpermsolves.github.io/bullscript/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="https://jpermsolves.github.io/bullscript/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://jpermsolves.github.io/bullscript/favicon-16x16.png">
+		<link rel="manifest" href="https://jpermsolves.github.io/bullscript/site.webmanifest">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+Arabic&family=Noto+Sans+Hebrew&family=Noto+Sans+Javanese&family=Noto+Sans+SC&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 		<title>Bullscript | A game about Unicode.</title>
 		<style>
 			body {
 				text-align: center;
-				margin: 10px;
+				margin: 0.1em;
 				font-family: "Noto Sans";
-			}
-			p {
-				font-size: 7em;
-				margin: 10px;
 			}
 			button {
 				font-family: "Noto Sans";
-				font-size: 3em;
+				white-space: normal !important;
+				height: 100% !important;
+			}
+			.material-symbols-outlined {
+				font-variation-settings:
+				'FILL' 0,
+				'wght' 400,
+				'GRAD' 0,
+				'opsz' 48;
+				font-size: 5em;
+			}
+			.menu-bar {
+				font-size: 4em;
+			}
+			.big {
+				font-size: 5em;
+				margin: 0.01em;
+			}
+			.w3-cell {
+				width: 50%;
+			}
+			#information {
+				margin: 0.5em;
 			}
 		</style>
+	</head>
+	<body>
+		<header class="w3-container">
+			<p class="big">Bullscript™</p>
+		</header>
+		<div class="w3-container">
+			<div class="w3-container">
+				<p id="character" class="big w3-margin-bottom"></p>
+			</div>
+			<div class="w3-container"> 
+				<div class="w3-cell-row">
+					<div class="w3-cell w3-mobile">
+						<button class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify(this);"></button>
+					</div>
+					<div class="w3-cell w3-mobile">
+						<button class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify(this);"></button>
+					</div>
+				</div>
+				<div class="w3-cell-row">
+					<div class="w3-cell w3-mobile">
+						<button class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify(this);"></button>
+					</div>
+					<div class="w3-cell w3-mobile">
+						<button class="w3-button w3-block w3-black w3-xxlarge choice" onclick="verify(this);"></button>
+					</div>
+				</div>
+			</div>
+			<div class="w3-container w3-margin-top">
+				<button id="next" class="w3-button w3-block w3-black w3-xxlarge" onclick="if (!clickable) {setup();}">Next</button>
+			</div>
+			<div class="w3-container">
+				<p class="w3-xxlarge w3-hide-small" id="instructions">Click one</p>
+			</div>
+		</div>
+		<!--
+		<footer class="w3-container">
+			<div class="w3-cell-row">
+				<div class="w3-cell">
+					<button class="w3-button w3-white w3-hover-gray w3-block material-symbols-outlined" onclick="brightMode = !brightMode; toggleBrightness();">brightness_6</button>
+				</div>
+				<div class="w3-cell">
+					<button class="w3-button w3-white w3-hover-gray w3-block material-symbols-outlined">info</button>
+				</div>
+			</div>
+		</footer>
+		-->
 		<script>
-			var char, charSet, character, charSetName, buttons, correctButton, falseCharSet, usedValues;
+			var char, charSet, charSetName, correctButton, falseCharSet, usedValues, wrongButtons, brightMode;
 			const charSetList = ["Basic Latin (ASCII)", "Latin-1 Supplement", "Hebrew", "Hebrew", "Hebrew", "CJK Unified Ideographs (Han)", "Arabic", "Javanese", "Javanese", "Javanese", "Hiragana", "Hiragana", "Cyrillic", "Greek and Coptic", "Greek and Coptic", "Greek and Coptic", "Greek and Coptic", "Greek and Coptic", "Greek and Coptic", "Carian", "Glagolitic", "Cypro-Minoan", "Armenian", "Armenian", "Armenian", "Latin Extended-A", "Gothic", "Cyrillic Supplement", "Runic", "Caucasian Albanian", "Elbasan", "Linear A", "Linear A", "Linear A", "Phaistos Disc", "Lycian", "Vithkuqi", "Vithkuqi", "Vithkuqi", "Vithkuqi", "Vithkuqi", "Vithkuqi", "Vithkuqi", "Vithkuqi", "Shavian", "Lydian", "Lydian", "Ogham", "Latin Extended-B", "Old Hungarian", "Old Hungarian", "Old Hungarian", "Georgian", "Georgian", "Georgian", "Georgian", "Old Permic", "Linear B", "Linear B", "Linear B", "Linear B", "Linear B", "Linear B Syllabary", "Linear B Ideograms", "Aegean Numbers", "Aegean Numbers", "Aegean Numbers"];
 			const charSetFirstNumInIntervalList = [33, 161, 1425, 1488, 1519, 19968, 1537, 43392, 43471, 43486, 12353, 12441, 1024, 880, 890, 900, 908, 910, 931, 66208, 11264, 77712, 1329, 1369, 1421, 256, 66352, 1280, 5792, 66864, 66927, 66816, 67072, 67392, 67424, 66000, 66176, 66928, 66940, 66956, 66964, 66967, 66979, 66995, 67003, 66640, 67872, 67903, 5760, 384, 68736, 68800, 68858, 4256, 4295, 4301, 4304, 66304, 66349, 66384, 65536, 65549, 65576, 65596, 65599, 65616, 65664, 65792, 65799, 65847];
 			const charSetLastNumInIntervalList = [127, 255, 1479, 1512, 1524, 40959, 1791, 43469, 43481, 43487, 12438, 12447, 1279, 887, 895, 906, 908, 929, 1023, 66256, 11359, 77810, 1366, 1418, 1423, 383, 66378, 1327, 5880, 66915, 66927, 66855, 67382, 67413, 67431, 66045, 66204, 66938, 66954, 66962, 66965, 66977, 66993, 67001, 67004, 66687, 67897, 67903, 5788, 591, 68786, 68850, 68863, 4293, 4295, 4301, 4351, 66339, 66351, 66426, 66547, 65574, 65594, 65597, 65613, 65629, 65786, 65794, 65843, 65855];
 			const fontList = ["Noto Sans", "Noto Sans", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans SC", "Noto Sans Arabic", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Japanese", "Noto Sans Japanese", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans Carian", "Noto Sans Glagolitic", "Noto Sans Cypro-Minoan", "Noto Sans Armenian", "Noto Sans Armenian", "Noto Sans Armenian", "Noto Sans", "Noto Sans Gothic", "Noto Sans", "Noto Sans Runic", "Noto Sans Caucasian Albanian", "Noto Sans Elbasan", "Noto Sans Linear A", "Noto Sans Linear A", "Noto Sans Linear A", "Noto Sans Phaistos Disc", "Noto Sans Lycian", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Shavian", "Noto Sans Lydian", "Noto Sans Ogham", "Noto Sans", "Noto Sans Old Hungarian", "Noto Sans Old Hungarian", "Noto Sans Georgian", "Noto Sans Georgian", "Noto Sans Georgian", "Noto Sans Georgian", "Noto Sans Old Permic", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Aegean Numbers", "Noto Sans Aegean Numbers", "Noto Sans Aegean Numbers"]
+			const happyPhrases = ["Amazing", "Nice", "Whoa!", "Whoo!", "Easy."];
+			const sadPhrases = ["NO!!!", "Ooh, so close.", "Nah.", "Sorry."]
+			let character, buttons, instructions;
+			character = document.getElementById("character");
+			buttons = document.querySelectorAll(".choice");
+			instructions = document.getElementById("instructions")
+			brightness = true;
 			function randomIntFromInterval(min, max) { // min and max included 
 				return Math.floor(Math.random() * (max - min + 1) + min);
 			}
-		</script>
-	</head>
-	<body>
-		<div class="w3-container">
-			<div class="w3-container">
-				<p id="character"></p>
-			</div>
-			<div class="w3-container">
-				<button id="button1" class="w3-button w3-block w3-red" onclick="verify(this);"></button>
-			</div>
-			<div class="w3-container">
-				<button id="button2" class="w3-button w3-block w3-indigo" onclick="verify(this);"></button>
-			</div>
-			<div class="w3-container w3-margin-top">
-				<button id="next" class="w3-button w3-block w3-black" onclick="setup();">Next</button>
-			</div>
-			<div class="w3-container">
-				<p id="answer"></p>
-			</div>
-		</div>
-		<script>
+			function equalButtons() {
+				var buttonList = buttons;
+				var button = 0;
+				if (buttonList.length % 2 == 1) {
+					buttonList.pop();
+				}
+				for (let i = 0; i < buttonList.length / 2 - 1; i += 2) {
+					if (buttonList[i].style.height != buttonList[i + 1].style.height) {
+						buttonList[i].style.height = max(buttonList[i].style.height, buttonList[i + 1].style.height);
+						buttonList[i + 1].style.height = max(buttonList[i].style.height, buttonList[i + 1].style.height);
+					}
+				}
+			}
 			function setup() {
+				wrongButtons = [];
 				clickable = true;
 				usedValues = [];
-				character = document.getElementById("character");
-				buttons = [document.getElementById("button1"), document.getElementById("button2")];
 				charSet = randomIntFromInterval(0, charSetList.length - 1);
 				char = randomIntFromInterval(charSetFirstNumInIntervalList[charSet], charSetLastNumInIntervalList[charSet]);
 				charSetName = charSetList[charSet];
@@ -77,23 +141,45 @@
 							falseCharSet = randomIntFromInterval(0, charSetList.length - 1);
 						}
 						buttons[i].innerHTML = charSetList[falseCharSet];
+						wrongButtons.push(buttons[i]);
 						usedValues.push(charSetList[falseCharSet]);
 					}
+					if (brightMode) {
+						buttons[i].className = "w3-button w3-white w3-block w3-xxlarge";
+					} else {
+						buttons[i].className = "w3-button w3-black w3-block w3-xxlarge";
+					}
 				}
-				document.getElementById("answer").innerHTML = "";
 				character.style.fontFamily = fontList[charSet];
+				instructions.innerHTML = "Click one";
+				equalButtons();
 			}
 			function verify(button) {
 				if (clickable) {
+					buttons[correctButton].className = "w3-button w3-green w3-block w3-xxlarge w3-hover-green";
+					for (let i = 0; i < wrongButtons.length; i++) {
+						wrongButtons[i].className = "w3-button w3-red w3-block w3-xxlarge w3-hover-red";
+					}
 					if (button.innerHTML === charSetName) {
-						console.log("Nice.");
-						document.getElementById("answer").innerHTML = "Correct";
-						document.getElementById("answer").style.color = "green";
+						instructions.innerHTML = happyPhrases[randomIntFromInterval(0, happyPhrases.length - 1)];
 					} else {
-						document.getElementById("answer").innerHTML = "Wrong";
-						document.getElementById("answer").style.color = "red";
+						instructions.innerHTML = sadPhrases[randomIntFromInterval(0, sadPhrases.length - 1)];
 					}
 					clickable = false;
+				}
+			}
+			function toggleBrightness() {
+				var buttonList = document.getElementsByTagName("button");
+				if (brightMode) {
+					for (let i = 0; i < buttonList.length; i++) {
+						buttonList[i].className = buttonList[i].className.replace(/w3-black/i, "w3-gray");
+					}
+					document.getElementsByTagName("body").className.replace(/w3-black/i, "w3-white");
+				} else {
+					for (let i = 0; i < buttonList.length; i++) {
+						buttonList[i].className = buttonList[i].className.replace(/w3-gray/i, "w3-black");
+					}
+					document.getElementsByTagName("body").className.replace(/w3-white/i, "w3-black");
 				}
 			}
 			setup();
