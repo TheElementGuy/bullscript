@@ -102,6 +102,7 @@
 			const fontList = ["Noto Sans", "Noto Sans", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans SC", "Noto Sans Arabic", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Japanese", "Noto Sans Japanese", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans Carian", "Noto Sans Glagolitic", "Noto Sans Cypro-Minoan", "Noto Sans Armenian", "Noto Sans Armenian", "Noto Sans Armenian", "Noto Sans", "Noto Sans Gothic", "Noto Sans", "Noto Sans Runic", "Noto Sans Caucasian Albanian", "Noto Sans Elbasan", "Noto Sans Linear A", "Noto Sans Linear A", "Noto Sans Linear A", "Noto Sans Phaistos Disc", "Noto Sans Lycian", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Shavian", "Noto Sans Lydian", "Noto Sans Ogham", "Noto Sans", "Noto Sans Old Hungarian", "Noto Sans Old Hungarian", "Noto Sans Georgian", "Noto Sans Georgian", "Noto Sans Georgian", "Noto Sans Georgian", "Noto Sans Old Italic", "Noto Sans Old Italic", "Noto Sans Old Permic", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Aegean Numbers", "Noto Sans Aegean Numbers", "Noto Sans Aegean Numbers"]
 			const happyPhrases = ["Amazing", "Nice", "Whoa!", "Whoo!", "Easy."];
 			const sadPhrases = ["NO!!!", "Ooh, so close.", "Nah.", "Sorry."]
+			const badCharSets = ["Cypro-Minoan", "Vithkuqi"]
 			let character, buttons, instructions;
 			character = document.getElementById("character");
 			buttons = document.querySelectorAll(".choice");
@@ -127,7 +128,10 @@
 				wrongButtons = [];
 				clickable = true;
 				usedValues = [];
-				charSet = randomIntFromInterval(0, charSetList.length - 1);
+				charSet = null;
+				while (badCharSets.includes(charSetList[charSet]) || charSet = null) {
+					charSet = randomIntFromInterval(0, charSetList.length - 1);
+				}
 				char = randomIntFromInterval(charSetFirstNumInIntervalList[charSet], charSetLastNumInIntervalList[charSet]);
 				charSetName = charSetList[charSet];
 				character.innerHTML = String.fromCodePoint(char);
