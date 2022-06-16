@@ -48,9 +48,6 @@
 				margin: 0.5em;
 			}
 		</style>
-		<script>
-			
-		</script>
 	</head>
 	<body>
 		<header class="w3-container">
@@ -99,10 +96,10 @@
 		-->
 		<script>
 			var char, charSet, charSetName, correctButton, falseCharSet, usedValues, wrongButtons, brightMode;
-			const charSetList = ["Basic Latin (ASCII)", "Latin-1 Supplement", "Hebrew", "Hebrew", "Hebrew", "CJK Unified Ideographs (Han)", "Arabic", "Javanese", "Javanese", "Javanese", "Hiragana", "Hiragana"];
-			const charSetFirstNumInIntervalList = [33, 161, 1425, 1488, 1520, 19968, 1537, 43392, 43471, 43486, 12353, 12441];
-			const charSetLastNumInIntervalList = [127, 255, 1479, 1512, 1524, 40959, 1791, 43469, 43481, 43487, 12438, 12447];
-			const fontList = ["Noto Sans", "Noto Sans", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans SC", "Noto Sans Arabic", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Japanese", "Noto Sans Japanese"]
+			const charSetList = ["Basic Latin (ASCII)", "Latin-1 Supplement", "Hebrew", "Hebrew", "Hebrew", "CJK Unified Ideographs (Han)", "Arabic", "Javanese", "Javanese", "Javanese", "Hiragana", "Hiragana", "Cyrillic", "Greek and Coptic", "Greek and Coptic", "Greek and Coptic", "Greek and Coptic", "Greek and Coptic", "Greek and Coptic", "Carian", "Glagolitic", "Cypro-Minoan", "Armenian", "Armenian", "Armenian", "Latin Extended-A", "Gothic", "Cyrillic Supplement", "Runic", "Caucasian Albanian", "Elbasan", "Linear A", "Linear A", "Linear A", "Phaistos Disc", "Lycian", "Vithkuqi", "Vithkuqi", "Vithkuqi", "Vithkuqi", "Vithkuqi", "Vithkuqi", "Vithkuqi", "Vithkuqi", "Shavian", "Lydian", "Lydian", "Ogham", "Latin Extended-B", "Old Hungarian", "Old Hungarian", "Old Hungarian", "Georgian", "Georgian", "Georgian", "Georgian", "Old Permic", "Linear B", "Linear B", "Linear B", "Linear B", "Linear B", "Linear B Syllabary", "Linear B Ideograms", "Aegean Numbers", "Aegean Numbers", "Aegean Numbers"];
+			const charSetFirstNumInIntervalList = [33, 161, 1425, 1488, 1519, 19968, 1537, 43392, 43471, 43486, 12353, 12441, 1024, 880, 890, 900, 908, 910, 931, 66208, 11264, 77712, 1329, 1369, 1421, 256, 66352, 1280, 5792, 66864, 66927, 66816, 67072, 67392, 67424, 66000, 66176, 66928, 66940, 66956, 66964, 66967, 66979, 66995, 67003, 66640, 67872, 67903, 5760, 384, 68736, 68800, 68858, 4256, 4295, 4301, 4304, 66304, 66349, 66384, 65536, 65549, 65576, 65596, 65599, 65616, 65664, 65792, 65799, 65847];
+			const charSetLastNumInIntervalList = [127, 255, 1479, 1512, 1524, 40959, 1791, 43469, 43481, 43487, 12438, 12447, 1279, 887, 895, 906, 908, 929, 1023, 66256, 11359, 77810, 1366, 1418, 1423, 383, 66378, 1327, 5880, 66915, 66927, 66855, 67382, 67413, 67431, 66045, 66204, 66938, 66954, 66962, 66965, 66977, 66993, 67001, 67004, 66687, 67897, 67903, 5788, 591, 68786, 68850, 68863, 4293, 4295, 4301, 4351, 66339, 66351, 66426, 66547, 65574, 65594, 65597, 65613, 65629, 65786, 65794, 65843, 65855];
+			const fontList = ["Noto Sans", "Noto Sans", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans Hebrew", "Noto Sans SC", "Noto Sans Arabic", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Javanese", "Noto Sans Japanese", "Noto Sans Japanese", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans", "Noto Sans Carian", "Noto Sans Glagolitic", "Noto Sans Cypro-Minoan", "Noto Sans Armenian", "Noto Sans Armenian", "Noto Sans Armenian", "Noto Sans", "Noto Sans Gothic", "Noto Sans", "Noto Sans Runic", "Noto Sans Caucasian Albanian", "Noto Sans Elbasan", "Noto Sans Linear A", "Noto Sans Linear A", "Noto Sans Linear A", "Noto Sans Phaistos Disc", "Noto Sans Lycian", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Vithkuqi", "Noto Sans Shavian", "Noto Sans Lydian", "Noto Sans Ogham", "Noto Sans", "Noto Sans Old Hungarian", "Noto Sans Old Hungarian", "Noto Sans Georgian", "Noto Sans Georgian", "Noto Sans Georgian", "Noto Sans Georgian", "Noto Sans Old Permic", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Linear B", "Noto Sans Aegean Numbers", "Noto Sans Aegean Numbers", "Noto Sans Aegean Numbers"]
 			const happyPhrases = ["Amazing", "Nice", "Whoa!", "Whoo!", "Easy."];
 			const sadPhrases = ["NO!!!", "Ooh, so close.", "Nah.", "Sorry."]
 			let character, buttons, instructions;
