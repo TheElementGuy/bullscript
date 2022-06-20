@@ -129,7 +129,7 @@
 				clickable = true;
 				usedValues = [];
 				charSet = null;
-				while (badCharSets.includes(charSetList[charSet]) || charSet = null) {
+				while (badCharSets.includes(charSetList[charSet]) || charSet == null) {
 					charSet = randomIntFromInterval(0, charSetList.length - 1);
 				}
 				char = randomIntFromInterval(charSetFirstNumInIntervalList[charSet], charSetLastNumInIntervalList[charSet]);
